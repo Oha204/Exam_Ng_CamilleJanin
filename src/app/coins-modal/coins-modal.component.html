@@ -1,0 +1,17 @@
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">{{ coinsEnfant?.name }} - {{ coinsEnfant?.symbol }}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="card-text">Rank : {{ coinsEnfant?.rank }}</p>
+                <p class="card-text">Volume USD 24H : {{ coinsEnfant?.volumeUsd24Hr | number:'1.2-2'}} $</p>
+                <p class="card-text">Market Capitalization : {{ coinsEnfant?.marketCapUsd | number:'1.2-2'}} $</p>
+                <p class="card-text">Supply : {{ coinsEnfant?.supply | number:'1.2-2'}} $</p>
+                <p class="card-text" *ngIf="coinsEnfant?.maxSupply">Supply Max : {{ coinsEnfant?.maxSupply | number:'1.2-2'}} $</p>
+            </div>
+        </div>
+    </div>
+</div>

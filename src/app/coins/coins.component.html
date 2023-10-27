@@ -1,0 +1,34 @@
+<div class="container">
+    <h2 class="my-5 text-center">Crypto</h2>
+
+    <div class="input-group mb-5 justify-content-center">
+        <input type="text" class="form-control" placeholder="Recherche..." [(ngModel)] ="search" name="nom">
+    </div>
+
+    <div class="row justify-content-center">
+        <div *ngFor="let coin of coins | filter:search" class="col-md-3 mb-4">
+            <div class="card" style="width: 100%;">
+                <div class="card-body">
+                    <h2 class="card-title mb-3">{{ coin.name }}</h2>
+                    <div>
+                        <h4 class="card-text">{{ coin.symbol }}</h4>
+                        <div>
+                            <p class="card-text">Prix actuel :  {{ coin.priceUsd | number:'1.0-0' }}$</p>
+                            <p>Variation 24h : <span [ngClass]="{'text-danger': parseChangePercent(coin.changePercent24Hr) < 0, 'text-success': parseChangePercent(coin.changePercent24Hr) >= 0}">{{ coin.changePercent24Hr | number:'1.2-2'}}%</span> </p>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal" (click)="selectCoins(coin)">Voir+</button>
+
+                            <a href="{{ coin.explorer }}" target="_blank">Site</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-coins-modal [coinsEnfant] = "coinsParent"></app-coins-modal>
+
+
